@@ -16,10 +16,10 @@ namespace GameOfLife
         private const int DefaultHeight = 15;
 
         private Cell cell;
-        private Pen borderPen = new Pen(Color.Black, 1);
+        private Pen borderPen = new Pen(Color.LightGray, 1);
 
-        Brush aliveBrush = new SolidBrush(Color.LimeGreen);
-        Brush deadBrush = new SolidBrush(Color.Orange);
+        Brush aliveBrush = new SolidBrush(Color.Green);
+        Brush deadBrush = new SolidBrush(Color.Red);
         Brush noneBrush = new SolidBrush(Color.LightGray);
 
         public event EventHandler UserChangedState;
@@ -36,17 +36,25 @@ namespace GameOfLife
             this.SetStyle(ControlStyles.UserPaint, true);
         }
 
+        /// <summary>
+        /// OnPaintBackground event
+        /// </summary>
+        /// <param name="e"></param>
+        protected override void OnPaintBackground(PaintEventArgs e)
+        {
+            // Override the background erase function of the base class,
+            // Resolve the window refresh, zoom in, the image flickers
+            return;
+        }
 
         protected override void OnPaint(PaintEventArgs e)
         {
+            this.DoubleBuffered = true;
             Graphics g = e.Graphics;
             
             Brush fillBrush = GetFillBrush();
 
-            g.Clear(Color.White);
-
-            g.FillRectangle(fillBrush, 1, 1, this.Width - 2, this.Height - 2);
-            g.DrawRectangle(borderPen, 1, 1, this.Width - 2, this.Height - 2);
+            g.FillRectangle(fillBrush, 0, 0, this.Width, this.Height);
         }
 
 

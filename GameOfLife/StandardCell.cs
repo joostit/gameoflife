@@ -16,13 +16,45 @@ namespace GameOfLife
         protected override LifeStates CalculateNextState(List<Cell> neighbors)
         {
             LifeStates result;
-            if (State == LifeStates.Alive)
+
+            int liveNeighbors = 0;
+
+            neighbors.ForEach((c) =>
             {
-                result = LifeStates.Dead;
+                if (c.State == LifeStates.Alive)
+                {
+                    liveNeighbors++;
+                }
+            }
+            );
+
+
+            if(base.State == LifeStates.Alive)
+            {
+                switch (liveNeighbors)
+                {
+                    case 2:
+                    case 3:
+                        result = LifeStates.Alive;
+                        break;
+
+                    default:
+                        result = LifeStates.Dead;
+                        break;
+                }
             }
             else
             {
-                result = LifeStates.Alive;
+                switch (liveNeighbors)
+                {
+                    case 3:
+                        result = LifeStates.Alive;
+                        break;
+
+                    default:
+                        result = LifeStates.Dead;
+                        break;
+                }
             }
 
             return result;

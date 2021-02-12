@@ -59,7 +59,7 @@ namespace GameOfLife
         {
             base.OnPaint(e);
 
-            e.Graphics.Clear(Color.White);
+            e.Graphics.Clear(Color.Black);
 
         }
 

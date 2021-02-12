@@ -32,6 +32,7 @@ namespace GameOfLife
             this.populationPanel = new GameOfLife.PopulationPanel();
             this.populationGroup = new System.Windows.Forms.GroupBox();
             this.controlGroup = new System.Windows.Forms.GroupBox();
+            this.resetButton = new System.Windows.Forms.Button();
             this.intervalLabel = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.intervalBar = new System.Windows.Forms.TrackBar();
@@ -53,7 +54,7 @@ namespace GameOfLife
             this.populationPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.populationPanel.Location = new System.Drawing.Point(3, 27);
             this.populationPanel.Name = "populationPanel";
-            this.populationPanel.Size = new System.Drawing.Size(806, 486);
+            this.populationPanel.Size = new System.Drawing.Size(652, 581);
             this.populationPanel.TabIndex = 0;
             this.populationPanel.UserChangedState += new System.EventHandler(this.populationPanel_UserChangedState);
             // 
@@ -66,7 +67,7 @@ namespace GameOfLife
             this.populationGroup.Controls.Add(this.populationPanel);
             this.populationGroup.Location = new System.Drawing.Point(12, 12);
             this.populationGroup.Name = "populationGroup";
-            this.populationGroup.Size = new System.Drawing.Size(812, 516);
+            this.populationGroup.Size = new System.Drawing.Size(658, 611);
             this.populationGroup.TabIndex = 1;
             this.populationGroup.TabStop = false;
             this.populationGroup.Text = "Population";
@@ -75,22 +76,33 @@ namespace GameOfLife
             // 
             this.controlGroup.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.controlGroup.Controls.Add(this.resetButton);
             this.controlGroup.Controls.Add(this.intervalLabel);
             this.controlGroup.Controls.Add(this.label3);
             this.controlGroup.Controls.Add(this.intervalBar);
             this.controlGroup.Controls.Add(this.stopButton);
             this.controlGroup.Controls.Add(this.startButton);
-            this.controlGroup.Location = new System.Drawing.Point(12, 534);
+            this.controlGroup.Location = new System.Drawing.Point(12, 629);
             this.controlGroup.Name = "controlGroup";
-            this.controlGroup.Size = new System.Drawing.Size(566, 172);
+            this.controlGroup.Size = new System.Drawing.Size(412, 172);
             this.controlGroup.TabIndex = 2;
             this.controlGroup.TabStop = false;
             this.controlGroup.Text = "Controls";
             // 
+            // resetButton
+            // 
+            this.resetButton.Location = new System.Drawing.Point(6, 122);
+            this.resetButton.Name = "resetButton";
+            this.resetButton.Size = new System.Drawing.Size(109, 44);
+            this.resetButton.TabIndex = 4;
+            this.resetButton.Text = "Reset";
+            this.resetButton.UseVisualStyleBackColor = true;
+            this.resetButton.Click += new System.EventHandler(this.resetButton_Click);
+            // 
             // intervalLabel
             // 
             this.intervalLabel.AutoSize = true;
-            this.intervalLabel.Location = new System.Drawing.Point(414, 19);
+            this.intervalLabel.Location = new System.Drawing.Point(248, 19);
             this.intervalLabel.Name = "intervalLabel";
             this.intervalLabel.Size = new System.Drawing.Size(56, 25);
             this.intervalLabel.TabIndex = 3;
@@ -99,7 +111,7 @@ namespace GameOfLife
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(334, 19);
+            this.label3.Location = new System.Drawing.Point(168, 19);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(74, 25);
             this.label3.TabIndex = 2;
@@ -108,7 +120,7 @@ namespace GameOfLife
             // intervalBar
             // 
             this.intervalBar.LargeChange = 100;
-            this.intervalBar.Location = new System.Drawing.Point(334, 47);
+            this.intervalBar.Location = new System.Drawing.Point(168, 47);
             this.intervalBar.Maximum = 500;
             this.intervalBar.Minimum = 50;
             this.intervalBar.Name = "intervalBar";
@@ -122,7 +134,7 @@ namespace GameOfLife
             // 
             // stopButton
             // 
-            this.stopButton.Location = new System.Drawing.Point(334, 122);
+            this.stopButton.Location = new System.Drawing.Point(168, 122);
             this.stopButton.Name = "stopButton";
             this.stopButton.Size = new System.Drawing.Size(109, 44);
             this.stopButton.TabIndex = 1;
@@ -132,7 +144,7 @@ namespace GameOfLife
             // 
             // startButton
             // 
-            this.startButton.Location = new System.Drawing.Point(449, 122);
+            this.startButton.Location = new System.Drawing.Point(283, 122);
             this.startButton.Name = "startButton";
             this.startButton.Size = new System.Drawing.Size(111, 44);
             this.startButton.TabIndex = 0;
@@ -147,7 +159,7 @@ namespace GameOfLife
             this.statusGroup.Controls.Add(this.aliveCountBox);
             this.statusGroup.Controls.Add(this.generationCountBox);
             this.statusGroup.Controls.Add(this.label1);
-            this.statusGroup.Location = new System.Drawing.Point(584, 534);
+            this.statusGroup.Location = new System.Drawing.Point(430, 629);
             this.statusGroup.Name = "statusGroup";
             this.statusGroup.Size = new System.Drawing.Size(240, 172);
             this.statusGroup.TabIndex = 3;
@@ -192,10 +204,11 @@ namespace GameOfLife
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(841, 718);
+            this.ClientSize = new System.Drawing.Size(687, 813);
             this.Controls.Add(this.statusGroup);
             this.Controls.Add(this.controlGroup);
             this.Controls.Add(this.populationGroup);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "MainForm";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.MainForm_Load);
@@ -224,6 +237,7 @@ namespace GameOfLife
         private System.Windows.Forms.TrackBar intervalBar;
         private System.Windows.Forms.Label intervalLabel;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button resetButton;
     }
 }
 

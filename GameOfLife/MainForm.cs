@@ -45,16 +45,22 @@ namespace GameOfLife
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            PopulationInitializer initializer = new PopulationInitializer();
-            population = initializer.GetPopulation();
-
-            populationPanel.SetPopulation(population);
+            ResetState();
             stopButton.Enabled = false;
 
             UpdateStatistics();
             UpdateInterval();
         }
 
+        private void ResetState()
+        {
+            intervalBar.Value = 250;
+
+            PopulationInitializer initializer = new PopulationInitializer();
+            population = initializer.GetPopulation();
+
+            populationPanel.SetPopulation(population);
+        }
 
         private void IncreaseGeneration()
         {
@@ -70,6 +76,7 @@ namespace GameOfLife
 
         private void startButton_Click(object sender, EventArgs e)
         {
+            resetButton.Enabled = false;
             startButton.Enabled = false;
             tickTimer.Start();
             stopButton.Enabled = true;
@@ -80,6 +87,7 @@ namespace GameOfLife
             stopButton.Enabled = false;
             tickTimer.Stop();
             startButton.Enabled = true;
+            resetButton.Enabled = true;
         }
 
         private void intervalBar_Scroll(object sender, EventArgs e)
@@ -104,6 +112,13 @@ namespace GameOfLife
         {
             generationCountBox.Text = population.GenerationNumber.ToString();
             aliveCountBox.Text = population.AliveCount.ToString();
+        }
+
+        private void resetButton_Click(object sender, EventArgs e)
+        {
+            ResetState();
+            UpdateStatistics();
+            UpdateInterval();
         }
     }
 }
