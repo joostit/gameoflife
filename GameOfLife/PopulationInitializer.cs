@@ -8,9 +8,9 @@ namespace GameOfLife
     {
 
 
-        public const int Width = 31;
+        public const int Width = 100;
 
-        public const int Height = 31;
+        public const int Height = 100;
 
 
         public Population GetPopulation()
@@ -23,25 +23,30 @@ namespace GameOfLife
 
         public void SetInitialCellStates(Population cells)
         {
-            cells[18, 13].State = LifeStates.Alive;
-            cells[18, 14].State = LifeStates.Alive;
-            cells[18, 15].State = LifeStates.Alive;
-            cells[17, 15].State = LifeStates.Alive;
-            cells[16, 15].State = LifeStates.Alive;
-            cells[15, 15].State = LifeStates.Alive;
-            cells[14, 15].State = LifeStates.Alive;
-            cells[13, 15].State = LifeStates.Alive;
-            cells[12, 15].State = LifeStates.Alive;
-            cells[12, 14].State = LifeStates.Alive;
-            cells[12, 13].State = LifeStates.Alive;
+            int cx = Width / 2;
+            int cy = Height / 2;
 
-            cells[15, 12].State = LifeStates.Alive;
-            cells[15, 13].State = LifeStates.Alive;
-            cells[15, 14].State = LifeStates.Alive;
-            cells[15, 16].State = LifeStates.Alive;
-            cells[15, 17].State = LifeStates.Alive;
-            cells[15, 18].State = LifeStates.Alive;
-            cells[14, 19].State = LifeStates.Alive;
+
+            cells[cx + 3, cy - 2].State = LifeStates.Alive;
+            cells[cx + 3, cy - 1].State = LifeStates.Alive;
+            cells[cx + 3, cy].State = LifeStates.Alive;
+            cells[cx + 2, cy].State = LifeStates.Alive;
+            cells[cx + 1, cy].State = LifeStates.Alive;
+            cells[cx, cy].State = LifeStates.Alive;
+            cells[cx - 1, cy].State = LifeStates.Alive;
+            cells[cx - 2, cy].State = LifeStates.Alive;
+            cells[cx - 3, cy].State = LifeStates.Alive;
+            cells[cx - 3, cy - 1].State = LifeStates.Alive;
+            cells[cx - 3, cy - 2].State = LifeStates.Alive;
+
+            cells[cx, cy - 3].State = LifeStates.Alive;
+            cells[cx, cy - 2].State = LifeStates.Alive;
+            cells[cx, cy - 1].State = LifeStates.Alive;
+            cells[cx, cy + 1].State = LifeStates.Alive;
+            cells[cx, cy + 2].State = LifeStates.Alive;
+            cells[cx, cy + 3].State = LifeStates.Alive;
+
+            cells[cx - 1, cy + 4].State = LifeStates.Alive;
         }
 
 

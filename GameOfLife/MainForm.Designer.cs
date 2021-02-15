@@ -29,7 +29,7 @@ namespace GameOfLife
         /// </summary>
         private void InitializeComponent()
         {
-            this.populationPanel = new GameOfLife.PopulationPanel();
+            this.populationPanel = new GameOfLife.MultiCellControl();
             this.populationGroup = new System.Windows.Forms.GroupBox();
             this.controlGroup = new System.Windows.Forms.GroupBox();
             this.resetButton = new System.Windows.Forms.Button();
@@ -54,7 +54,7 @@ namespace GameOfLife
             this.populationPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.populationPanel.Location = new System.Drawing.Point(3, 27);
             this.populationPanel.Name = "populationPanel";
-            this.populationPanel.Size = new System.Drawing.Size(652, 581);
+            this.populationPanel.Size = new System.Drawing.Size(1148, 1047);
             this.populationPanel.TabIndex = 0;
             this.populationPanel.UserChangedState += new System.EventHandler(this.populationPanel_UserChangedState);
             // 
@@ -67,7 +67,7 @@ namespace GameOfLife
             this.populationGroup.Controls.Add(this.populationPanel);
             this.populationGroup.Location = new System.Drawing.Point(12, 12);
             this.populationGroup.Name = "populationGroup";
-            this.populationGroup.Size = new System.Drawing.Size(658, 611);
+            this.populationGroup.Size = new System.Drawing.Size(1154, 1077);
             this.populationGroup.TabIndex = 1;
             this.populationGroup.TabStop = false;
             this.populationGroup.Text = "Population";
@@ -82,9 +82,9 @@ namespace GameOfLife
             this.controlGroup.Controls.Add(this.intervalBar);
             this.controlGroup.Controls.Add(this.stopButton);
             this.controlGroup.Controls.Add(this.startButton);
-            this.controlGroup.Location = new System.Drawing.Point(12, 629);
+            this.controlGroup.Location = new System.Drawing.Point(12, 1095);
             this.controlGroup.Name = "controlGroup";
-            this.controlGroup.Size = new System.Drawing.Size(412, 172);
+            this.controlGroup.Size = new System.Drawing.Size(908, 172);
             this.controlGroup.TabIndex = 2;
             this.controlGroup.TabStop = false;
             this.controlGroup.Text = "Controls";
@@ -159,7 +159,7 @@ namespace GameOfLife
             this.statusGroup.Controls.Add(this.aliveCountBox);
             this.statusGroup.Controls.Add(this.generationCountBox);
             this.statusGroup.Controls.Add(this.label1);
-            this.statusGroup.Location = new System.Drawing.Point(430, 629);
+            this.statusGroup.Location = new System.Drawing.Point(926, 1095);
             this.statusGroup.Name = "statusGroup";
             this.statusGroup.Size = new System.Drawing.Size(240, 172);
             this.statusGroup.TabIndex = 3;
@@ -204,7 +204,7 @@ namespace GameOfLife
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(687, 813);
+            this.ClientSize = new System.Drawing.Size(1183, 1279);
             this.Controls.Add(this.statusGroup);
             this.Controls.Add(this.controlGroup);
             this.Controls.Add(this.populationGroup);
@@ -224,7 +224,7 @@ namespace GameOfLife
 
         #endregion
 
-        private PopulationPanel populationPanel;
+        private MultiCellControl populationPanel;
         private System.Windows.Forms.GroupBox populationGroup;
         private System.Windows.Forms.GroupBox controlGroup;
         private System.Windows.Forms.GroupBox statusGroup;

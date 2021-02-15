@@ -16,6 +16,14 @@ namespace GameOfLife
 
         public int Y { get; set; }
 
+        public bool IsAlive
+        {
+            get
+            {
+                return State == LifeStates.Alive;
+            }
+        }
+
         public Cell(int x, int y)
         {
             this.X = x;
