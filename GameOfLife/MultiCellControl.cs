@@ -17,6 +17,8 @@ namespace GameOfLife
 
         private Population population;
 
+        private DrawableCell[,] cells;
+
         public event EventHandler UserChangedState;
 
         Brush aliveBrush = new SolidBrush(Color.LimeGreen);
@@ -38,7 +40,14 @@ namespace GameOfLife
             this.Controls.Clear();
             this.population = newPopulation;
 
-            //population.ForEachCell(AddCellControl);
+            cells = new DrawableCell[population.Width, population.Height];
+
+            population.ForEachCell((c, x, y) =>
+            {
+                DrawableCell dCell = new DrawableCell(c);
+                cells[x, y] = dCell;
+            });
+
 
             this.ResumeLayout();
         }
@@ -53,7 +62,6 @@ namespace GameOfLife
 
         protected override void OnPaint(PaintEventArgs e)
         {
-            //base.OnPaint(e);
 
             if (this.DesignMode)
             {
@@ -65,18 +73,15 @@ namespace GameOfLife
 
             Graphics g = Graphics.FromImage(screenBuffer);
 
-            //g.Clear(Color.Black);
-
             Brush cellBrush;
-            Cell cell;
+            DrawableCell cell;
             Rectangle cellRect;
 
             for (int xi = 0; xi < population.Width; xi++)
             {
                 for(int yi = 0; yi < population.Height; yi++)
                 {
-                    cell = population[xi, yi];
-                    cellBrush = cell.IsAlive ? aliveBrush : deadBrush;
+                    cell = cells[xi, yi];
 
                     cellRect = new Rectangle(
                         cellWidth * xi + xMargin, 
@@ -84,7 +89,7 @@ namespace GameOfLife
                         cellWidth - (xMargin * 2), 
                         cellHeight - (yMargin * 2));
 
-                    g.FillRectangle(cellBrush, cellRect);
+                    g.FillRectangle(cell.Brush, cellRect);
                 }
             }
 
