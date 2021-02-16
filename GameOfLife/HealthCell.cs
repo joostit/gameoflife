@@ -17,30 +17,65 @@ namespace GameOfLife
             int? currentHealth = Health;
 
             int liveNeighbors = 0;
+            int maxHealthNeighbors = 0;
+            int goodHealthNeighbors = 0;
 
             neighbors.ForEach((c) =>
             {
-                if (c.State == LifeStates.Alive)
+                if (c.IsAlive)
                 {
                     liveNeighbors++;
+                }
+
+                if (c.IsMaxHealth)
+                {
+                    maxHealthNeighbors++;
+                }
+
+                if (c.IsGoodHealth)
+                {
+                    goodHealthNeighbors++;
                 }
             }
             );
 
 
-            if (base.State == LifeStates.Alive)
+            if (base.IsAlive)
             {
                 switch (liveNeighbors)
                 {
+
                     case 2:
-                        // Don't increase with only two live neighbors
+                        // Only increase to Max_Health if we have lots of healthy neigbors
+                        if (goodHealthNeighbors >= 1)
+                        {
+                            currentHealth++;
+                        }
+                        else
+                        {
+                            currentHealth = 1;
+                        }
                         break;
                     case 3:
-                        currentHealth++;
+
+                        // Only increase to Max_Health if we have lots of healthy neighbors
+                        if(maxHealthNeighbors == 3)
+                        {
+                            currentHealth++;
+                        }
+                        else
+                        {
+                            // The health doesn't increase
+                        }
+                        break;
+
+                    case 4:
+                    case 5:
+                        currentHealth -= 2;
                         break;
 
                     default:
-                        currentHealth--;
+                        currentHealth = 0;
                         break;
                 }
             }
@@ -48,12 +83,15 @@ namespace GameOfLife
             {
                 switch (liveNeighbors)
                 {
-                    case 4:
-                        currentHealth++;
+                    case 3:
+                        if(goodHealthNeighbors >= 2)
+                        {
+                            currentHealth = 2;
+                        }
                         break;
 
                     default:
-                        currentHealth--;
+                        
                         break;
                 }
             }

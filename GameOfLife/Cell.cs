@@ -7,7 +7,8 @@ namespace GameOfLife
     abstract class Cell
     {
 
-        private int MAX_HEALTH = 3;
+        private const int MAX_HEALTH = 3;
+        private const int GOOD_HEALTH = 2;
         private const int MIN_HEALTH = 0;
 
         public LifeStates State
@@ -32,6 +33,24 @@ namespace GameOfLife
                 }
             }
         }
+
+
+        public bool IsMaxHealth
+        {
+            get
+            {
+                return Health == MAX_HEALTH;
+            }
+        }
+
+        public bool IsGoodHealth
+        {
+            get
+            {
+                return Health  >= GOOD_HEALTH;
+            }
+        }
+
 
         private int nextHealth = 0;
         private List<Cell> neighbors = new List<Cell>();
