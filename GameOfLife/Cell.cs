@@ -7,14 +7,20 @@ namespace GameOfLife
     abstract class Cell
     {
 
+        private int MAX_HEALTH = 3;
+        private const int MIN_HEALTH = 0;
+
         public LifeStates State { get; set; }
 
         private LifeStates nextState = LifeStates.Dead;
+        private int nextHealth = 0;
         private List<Cell> neighbors = new List<Cell>();
 
         public int X { get; set; }
 
         public int Y { get; set; }
+
+        public int Health { get; private set; }
 
         public bool IsAlive
         {
@@ -41,7 +47,26 @@ namespace GameOfLife
         /// </summary>
         public void DetermineNextState()
         {
-            nextState = CalculateNextState(neighbors);
+            LifeStates? calcState = CalculateNextState(neighbors);
+            
+            if(calcState != null)
+            {
+                nextHealth = calcState.Value == LifeStates.Alive ? MAX_HEALTH : MIN_HEALTH;
+                nextState = calcState.Value;
+            }
+            else
+            {
+                int? calcHealth = CalculateNextHealth(neighbors);
+                if(calcHealth == null)
+                {
+                    throw new InvalidOperationException("Either CalculateNextState() or CalculateNextHealth() needs to be overridden and return a value");
+                }
+
+                nextState = calcHealth > 0 ? LifeStates.Alive : LifeStates.Dead;
+                nextHealth = calcHealth.Value;
+            }
+
+
         }
 
         /// <summary>
@@ -50,6 +75,7 @@ namespace GameOfLife
         public void ApplyNextState()
         {
             State = nextState;
+            Health = nextHealth;
         }
 
 
@@ -71,9 +97,27 @@ namespace GameOfLife
         }
 
 
+        protected void SetHealth(int newHealth)
+        {
+            int toSet = newHealth < MAX_HEALTH ? newHealth : MAX_HEALTH;
+            toSet = toSet > MIN_HEALTH ? toSet : MIN_HEALTH;
 
 
-        protected abstract LifeStates CalculateNextState(List<Cell> neighbors);
+            Health = toSet;
+
+            State = Health > 0 ? LifeStates.Alive : LifeStates.Dead;
+        }
+
+
+        protected virtual LifeStates? CalculateNextState(List<Cell> neighbors)
+        {
+            return null;
+        }
+
+        protected virtual int? CalculateNextHealth(List<Cell> neighbors)
+        {
+            return null;
+        }
 
     }
 }

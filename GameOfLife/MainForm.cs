@@ -54,7 +54,7 @@ namespace GameOfLife
 
         private void ResetState()
         {
-            intervalBar.Value = 250;
+            intervalBar.Value = 50;
 
             PopulationInitializer initializer = new PopulationInitializer();
             population = initializer.GetPopulation();
@@ -119,6 +119,7 @@ namespace GameOfLife
             ResetState();
             UpdateStatistics();
             UpdateInterval();
+            populationPanel.Invalidate();
         }
     }
 }

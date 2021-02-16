@@ -13,9 +13,9 @@ namespace GameOfLife
         }
 
 
-        protected override LifeStates CalculateNextState(List<Cell> neighbors)
+        protected override LifeStates? CalculateNextState(List<Cell> neighbors)
         {
-            LifeStates result;
+            LifeStates? result = null;
 
             int liveNeighbors = 0;
 

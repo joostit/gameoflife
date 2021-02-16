@@ -21,8 +21,8 @@ namespace GameOfLife
 
         public event EventHandler UserChangedState;
 
-        Brush aliveBrush = new SolidBrush(Color.LimeGreen);
-        Brush deadBrush = new SolidBrush(Color.Red);
+        private DrawableCell lastMouseOverCell = null;
+        private LifeStates? mouseDownSetState = null;
 
         public MultiCellControl()
         {
@@ -45,6 +45,7 @@ namespace GameOfLife
             population.ForEachCell((c, x, y) =>
             {
                 DrawableCell dCell = new DrawableCell(c);
+                dCell.UserChangedState += DCell_UserChangedState;
                 cells[x, y] = dCell;
             });
 
@@ -52,6 +53,11 @@ namespace GameOfLife
             this.ResumeLayout();
         }
 
+        private void DCell_UserChangedState(object sender, EventArgs e)
+        {
+            this.Invalidate();
+            RaiseUserChangedState();
+        }
 
         protected override void OnPaintBackground(PaintEventArgs e)
         {
@@ -73,7 +79,6 @@ namespace GameOfLife
 
             Graphics g = Graphics.FromImage(screenBuffer);
 
-            Brush cellBrush;
             DrawableCell cell;
             Rectangle cellRect;
 
@@ -99,6 +104,58 @@ namespace GameOfLife
         private void RaiseUserChangedState()
         {
             UserChangedState.Invoke(this, EventArgs.Empty);
+        }
+
+
+        protected override void OnMouseMove(MouseEventArgs e)
+        {
+            if(mouseDownSetState != null)
+            {
+                DrawableCell cell = getCellAtPoint(e.X, e.Y);
+                cell.SetState(mouseDownSetState.Value);
+            }
+        }
+
+        protected override void OnMouseDown(MouseEventArgs e)
+        {
+
+            DrawableCell cell = getCellAtPoint(e.X, e.Y);
+
+            if (cell != null)
+            {
+                mouseDownSetState = cell.Cell.IsAlive ? mouseDownSetState = LifeStates.Dead : LifeStates.Alive;
+                cell.SetState(mouseDownSetState.Value);
+            }
+
+        }
+
+        protected override void OnMouseUp(MouseEventArgs e)
+        {
+            mouseDownSetState = null;
+        }
+
+
+        protected override void OnMouseLeave(EventArgs e)
+        {
+            mouseDownSetState = null;
+        }
+
+        private DrawableCell getCellAtPoint(int x, int y)
+        {
+            int cX = x / cellWidth;
+            int cY = y / cellHeight;
+
+            if(cX < 0 || cY < 0)
+            {
+                return null;
+            }
+
+            if (cX >= population.Width || cY >= population.Height)
+            {
+                return null;
+            }
+
+            return cells[cX, cY];
         }
 
     }

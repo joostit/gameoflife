@@ -129,7 +129,7 @@ namespace GameOfLife
             this.intervalBar.TabIndex = 0;
             this.intervalBar.TickFrequency = 50;
             this.intervalBar.TickStyle = System.Windows.Forms.TickStyle.Both;
-            this.intervalBar.Value = 250;
+            this.intervalBar.Value = 50;
             this.intervalBar.Scroll += new System.EventHandler(this.intervalBar_Scroll);
             // 
             // stopButton
