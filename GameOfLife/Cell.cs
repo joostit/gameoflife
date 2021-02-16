@@ -79,10 +79,8 @@ namespace GameOfLife
                 {
                     throw new InvalidOperationException("Either CalculateNextState() or CalculateNextHealth() needs to be overridden and return a value");
                 }
-                nextHealth = calcHealth.Value;
+                nextHealth = CropHealthValue(calcHealth.Value);
             }
-
-
         }
 
         /// <summary>
@@ -91,6 +89,14 @@ namespace GameOfLife
         public void ApplyNextState()
         {
             Health = nextHealth;
+        }
+
+
+        private int CropHealthValue(int input)
+        {
+            int cropped = input > MIN_HEALTH ? input : MIN_HEALTH;
+            cropped = cropped < MAX_HEALTH ? cropped : MAX_HEALTH;
+            return cropped;
         }
 
 

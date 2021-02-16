@@ -18,11 +18,9 @@ namespace GameOfLife
         private Population population;
 
         private DrawableCell[,] cells;
+        private LifeStates? mouseDownSetState = null;
 
         public event EventHandler UserChangedState;
-
-        private DrawableCell lastMouseOverCell = null;
-        private LifeStates? mouseDownSetState = null;
 
         public MultiCellControl()
         {

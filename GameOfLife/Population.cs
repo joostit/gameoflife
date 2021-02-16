@@ -51,7 +51,7 @@ namespace GameOfLife
         {
             Cells = new Cell[Width, Height];
 
-            CellAction createAction = (c, y, x) => Cells[x, y] = new StandardCell(x, y);
+            CellAction createAction = (c, y, x) => Cells[x, y] = new HealthCell(x, y);
             CellAction assignNeighborsAction = AssignNeighbors;
 
             ForEachCell(createAction);
