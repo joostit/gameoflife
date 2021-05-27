@@ -52,9 +52,10 @@ namespace GameOfLife
             // populationPanel
             // 
             this.populationPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.populationPanel.Location = new System.Drawing.Point(3, 27);
+            this.populationPanel.Location = new System.Drawing.Point(2, 18);
+            this.populationPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.populationPanel.Name = "populationPanel";
-            this.populationPanel.Size = new System.Drawing.Size(1148, 1047);
+            this.populationPanel.Size = new System.Drawing.Size(997, 657);
             this.populationPanel.TabIndex = 0;
             this.populationPanel.UserChangedState += new System.EventHandler(this.populationPanel_UserChangedState);
             // 
@@ -65,9 +66,11 @@ namespace GameOfLife
             | System.Windows.Forms.AnchorStyles.Right)));
             this.populationGroup.BackColor = System.Drawing.SystemColors.Control;
             this.populationGroup.Controls.Add(this.populationPanel);
-            this.populationGroup.Location = new System.Drawing.Point(12, 12);
+            this.populationGroup.Location = new System.Drawing.Point(11, 11);
+            this.populationGroup.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.populationGroup.Name = "populationGroup";
-            this.populationGroup.Size = new System.Drawing.Size(1154, 1077);
+            this.populationGroup.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.populationGroup.Size = new System.Drawing.Size(1001, 677);
             this.populationGroup.TabIndex = 1;
             this.populationGroup.TabStop = false;
             this.populationGroup.Text = "Population";
@@ -82,18 +85,21 @@ namespace GameOfLife
             this.controlGroup.Controls.Add(this.intervalBar);
             this.controlGroup.Controls.Add(this.stopButton);
             this.controlGroup.Controls.Add(this.startButton);
-            this.controlGroup.Location = new System.Drawing.Point(12, 1095);
+            this.controlGroup.Location = new System.Drawing.Point(13, 692);
+            this.controlGroup.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.controlGroup.Name = "controlGroup";
-            this.controlGroup.Size = new System.Drawing.Size(908, 172);
+            this.controlGroup.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.controlGroup.Size = new System.Drawing.Size(997, 103);
             this.controlGroup.TabIndex = 2;
             this.controlGroup.TabStop = false;
             this.controlGroup.Text = "Controls";
             // 
             // resetButton
             // 
-            this.resetButton.Location = new System.Drawing.Point(6, 122);
+            this.resetButton.Location = new System.Drawing.Point(4, 73);
+            this.resetButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.resetButton.Name = "resetButton";
-            this.resetButton.Size = new System.Drawing.Size(109, 44);
+            this.resetButton.Size = new System.Drawing.Size(76, 26);
             this.resetButton.TabIndex = 4;
             this.resetButton.Text = "Reset";
             this.resetButton.UseVisualStyleBackColor = true;
@@ -102,29 +108,32 @@ namespace GameOfLife
             // intervalLabel
             // 
             this.intervalLabel.AutoSize = true;
-            this.intervalLabel.Location = new System.Drawing.Point(248, 19);
+            this.intervalLabel.Location = new System.Drawing.Point(174, 11);
+            this.intervalLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.intervalLabel.Name = "intervalLabel";
-            this.intervalLabel.Size = new System.Drawing.Size(56, 25);
+            this.intervalLabel.Size = new System.Drawing.Size(35, 15);
             this.intervalLabel.TabIndex = 3;
             this.intervalLabel.Text = " 0 ms";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(168, 19);
+            this.label3.Location = new System.Drawing.Point(118, 11);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(74, 25);
+            this.label3.Size = new System.Drawing.Size(49, 15);
             this.label3.TabIndex = 2;
             this.label3.Text = "Interval:";
             // 
             // intervalBar
             // 
             this.intervalBar.LargeChange = 100;
-            this.intervalBar.Location = new System.Drawing.Point(168, 47);
+            this.intervalBar.Location = new System.Drawing.Point(118, 28);
+            this.intervalBar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.intervalBar.Maximum = 500;
             this.intervalBar.Minimum = 50;
             this.intervalBar.Name = "intervalBar";
-            this.intervalBar.Size = new System.Drawing.Size(226, 69);
+            this.intervalBar.Size = new System.Drawing.Size(158, 45);
             this.intervalBar.SmallChange = 50;
             this.intervalBar.TabIndex = 0;
             this.intervalBar.TickFrequency = 50;
@@ -134,9 +143,10 @@ namespace GameOfLife
             // 
             // stopButton
             // 
-            this.stopButton.Location = new System.Drawing.Point(168, 122);
+            this.stopButton.Location = new System.Drawing.Point(118, 73);
+            this.stopButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.stopButton.Name = "stopButton";
-            this.stopButton.Size = new System.Drawing.Size(109, 44);
+            this.stopButton.Size = new System.Drawing.Size(76, 26);
             this.stopButton.TabIndex = 1;
             this.stopButton.Text = "Stop";
             this.stopButton.UseVisualStyleBackColor = true;
@@ -144,9 +154,10 @@ namespace GameOfLife
             // 
             // startButton
             // 
-            this.startButton.Location = new System.Drawing.Point(283, 122);
+            this.startButton.Location = new System.Drawing.Point(198, 73);
+            this.startButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.startButton.Name = "startButton";
-            this.startButton.Size = new System.Drawing.Size(111, 44);
+            this.startButton.Size = new System.Drawing.Size(78, 26);
             this.startButton.TabIndex = 0;
             this.startButton.Text = "Start";
             this.startButton.UseVisualStyleBackColor = true;
@@ -159,9 +170,11 @@ namespace GameOfLife
             this.statusGroup.Controls.Add(this.aliveCountBox);
             this.statusGroup.Controls.Add(this.generationCountBox);
             this.statusGroup.Controls.Add(this.label1);
-            this.statusGroup.Location = new System.Drawing.Point(926, 1095);
+            this.statusGroup.Location = new System.Drawing.Point(843, 826);
+            this.statusGroup.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.statusGroup.Name = "statusGroup";
-            this.statusGroup.Size = new System.Drawing.Size(240, 172);
+            this.statusGroup.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.statusGroup.Size = new System.Drawing.Size(168, 103);
             this.statusGroup.TabIndex = 3;
             this.statusGroup.TabStop = false;
             this.statusGroup.Text = "Status";
@@ -169,46 +182,51 @@ namespace GameOfLife
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(54, 70);
+            this.label2.Location = new System.Drawing.Point(38, 42);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(54, 25);
+            this.label2.Size = new System.Drawing.Size(36, 15);
             this.label2.TabIndex = 5;
             this.label2.Text = "Alive:";
             // 
             // aliveCountBox
             // 
-            this.aliveCountBox.Location = new System.Drawing.Point(114, 67);
+            this.aliveCountBox.Location = new System.Drawing.Point(80, 40);
+            this.aliveCountBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.aliveCountBox.Name = "aliveCountBox";
             this.aliveCountBox.ReadOnly = true;
-            this.aliveCountBox.Size = new System.Drawing.Size(120, 31);
+            this.aliveCountBox.Size = new System.Drawing.Size(85, 23);
             this.aliveCountBox.TabIndex = 4;
             // 
             // generationCountBox
             // 
-            this.generationCountBox.Location = new System.Drawing.Point(114, 30);
+            this.generationCountBox.Location = new System.Drawing.Point(80, 18);
+            this.generationCountBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.generationCountBox.Name = "generationCountBox";
             this.generationCountBox.ReadOnly = true;
-            this.generationCountBox.Size = new System.Drawing.Size(120, 31);
+            this.generationCountBox.Size = new System.Drawing.Size(85, 23);
             this.generationCountBox.TabIndex = 3;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 33);
+            this.label1.Location = new System.Drawing.Point(4, 20);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(102, 25);
+            this.label1.Size = new System.Drawing.Size(68, 15);
             this.label1.TabIndex = 2;
             this.label1.Text = "Generation:";
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1183, 1279);
+            this.ClientSize = new System.Drawing.Size(1023, 806);
             this.Controls.Add(this.statusGroup);
             this.Controls.Add(this.controlGroup);
             this.Controls.Add(this.populationGroup);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "MainForm";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.MainForm_Load);

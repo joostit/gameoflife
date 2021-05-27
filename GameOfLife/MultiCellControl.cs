@@ -12,8 +12,8 @@ namespace GameOfLife
         private int xMargin = 1;
         private int yMargin = 1;
 
-        private int cellWidth = 10;
-        private int cellHeight = 10;
+        private int cellWidth = 6;
+        private int cellHeight = 6;
 
         private Population population;
 
